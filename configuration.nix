@@ -1,5 +1,12 @@
 { lib, inputs, config, pkgs, ... }:
 {
+	home-manager.users.funnyishfish = {
+		home.stateVersion = "26.05";
+			imports = [
+				./nixcraft.nix
+			];
+		};
+	home-manager.extraSpecialArgs = { inherit inputs; };
 	imports = [
 			./hardware-configuration.nix
 			./programs.nix
@@ -19,6 +26,7 @@
 
 	networking.hostName = "nixos";
 	networking.networkmanager.enable = true;
+	networking.firewall.checkReversePath = false;
 
 	time.timeZone = "America/New_York";
 	i18n.defaultLocale = "en_US.UTF-8";

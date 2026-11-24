@@ -15,7 +15,49 @@
         "type": "github"
       }
     },
+    "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "nixcraft",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1765835352,
+        "narHash": "sha256-XswHlK/Qtjasvhd1nOa1e8MgZ8GS//jBoTqWtrS1Giw=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "a34fae9c08a15ad73f295041fec82323541400a9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795325060,
+        "narHash": "sha256-XYoMPsqRFZ6jOaYI1KAAu8fzqif4tkCX8mhEKrViDXQ=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "6480d7d8533b88c78cc6dcda395ab89cd546e450",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-26.05",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager_2": {
       "inputs": {
         "nixpkgs": [
           "nixcord",
@@ -34,6 +76,21 @@
         "owner": "nix-community",
         "ref": "release-26.05",
         "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "import-tree": {
+      "locked": {
+        "lastModified": 1788467110,
+        "narHash": "sha256-ljEMTXP/rH0tOvDzc9gzwww6KcHRPRnEHzd9lK48V7s=",
+        "owner": "denful",
+        "repo": "import-tree",
+        "rev": "eb1b52eaecc57f7c136d07ae8a93e724dfecac46",
+        "type": "github"
+      },
+      "original": {
+        "owner": "denful",
+        "repo": "import-tree",
         "type": "github"
       }
     },
@@ -102,7 +159,7 @@
     },
     "nixcord": {
       "inputs": {
-        "home-manager": "home-manager",
+        "home-manager": "home-manager_2",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-ci": "nixpkgs-ci",
@@ -120,6 +177,29 @@
       "original": {
         "owner": "4evy",
         "repo": "nixcord",
+        "type": "github"
+      }
+    },
+    "nixcraft": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "import-tree": "import-tree",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "sources": "sources"
+      },
+      "locked": {
+        "lastModified": 1795423034,
+        "narHash": "sha256-JnxBgjMV6UKR+F7YP9InK3Aj9mL7QcB7045/wPElCQc=",
+        "owner": "loystonpais",
+        "repo": "nixcraft",
+        "rev": "0a2da743ece0951a46c5a63a6fa97b37a2363754",
+        "type": "github"
+      },
+      "original": {
+        "owner": "loystonpais",
+        "repo": "nixcraft",
         "type": "github"
       }
     },
@@ -228,8 +308,10 @@
     },
     "root": {
       "inputs": {
+        "home-manager": "home-manager",
         "nix-alien": "nix-alien",
         "nixcord": "nixcord",
+        "nixcraft": "nixcraft",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
         "sls-steam": "sls-steam"
@@ -252,6 +334,23 @@
       "original": {
         "owner": "AceSLS",
         "repo": "SLSsteam",
+        "type": "github"
+      }
+    },
+    "sources": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1795409093,
+        "narHash": "sha256-CSJgrly9Rwn/L5MADIYXuA2WrGk9pZAhF0GrNoN/DDU=",
+        "owner": "loystonpais",
+        "repo": "minecraft-sources",
+        "rev": "728a4dac10e21dc0cfccd0fa961a350aacd9d0da",
+        "type": "github"
+      },
+      "original": {
+        "owner": "loystonpais",
+        "ref": "nixcraft",
+        "repo": "minecraft-sources",
         "type": "github"
       }
     },

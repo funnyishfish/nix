@@ -34,7 +34,14 @@
 			pinentry-curses
 			adwaita-icon-theme
 			kdePackages.ksshaskpass
-	];
+			proton-vpn
+			wireguard-tools
+			kdePackages.kdenlive
+			blender
+			unzip
+			zip
+			jq
+		];
 
 	programs.obs-studio = {
 		enable = true;
@@ -50,6 +57,7 @@
 	programs.nixcord = {
 		enable = true;
 		user = "funnyishfish";
+		equibop.enable = true;
 		discord.equicord.enable = true;
 		discord.krisp.enable = true;
 		userPlugins.customStreamPreview = "github:MrTopQ/customStream-Vencord/cb2b6ac63e165de8210b4dca99bea0852f266d1c";
@@ -64,6 +72,11 @@
 				exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
 			fi
 		'';
+	};
+
+	programs.localsend = {
+		enable = true;
+		openFirewall = true; # opens port 53317 for receiving files
 	};
 
 	programs.fish = {
