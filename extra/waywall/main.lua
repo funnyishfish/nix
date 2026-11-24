@@ -10,7 +10,6 @@ local thin_overlay_path = waywall_config_path .. "resources/overlay_thin.png"
 local wide_overlay_path = waywall_config_path .. "resources/overlay_wide.png"
 
 local pacem_path = waywall_config_path .. "resources/paceman-tracker-0.7.2.jar"
-local nb_path = waywall_config_path .. "resources/Ninjabrain-Bot-1.5.2.jar"
 local overlay_path = waywall_config_path .. "resources/measuring_overlay.png"
 local stretched_overlay_path = waywall_config_path .. "resources/stretched_overlay.png"
 
@@ -64,13 +63,13 @@ return function(cfg, remaps)
 
     -- ==== TOOLS ====
     local is_ninb_running = function()
-        local handle = io.popen("ps aux | grep '[N]injabrain-Bot.*\\.jar'")
+    local handle = io.popen("/run/current-system/sw/bin/pgrep -f 'Ninjabrain-Bot.*\\.jar'")
         local result = handle:read("*l")
         handle:close()
         return result ~= nil
     end
     local is_pacem_running = function()
-        local handle = io.popen("ps aux | grep '[p]aceman-tracker.*\\.jar'")
+        local handle = io.popen("/run/current-system/sw/bin/pgrep -f '[p]aceman-tracker.*\\.jar'")
         local result = handle:read("*l")
         handle:close()
         return result ~= nil
@@ -496,7 +495,7 @@ return function(cfg, remaps)
 
         [cfg.toggle_ninbot_key] = chat_mode_helper(function()
             if not is_ninb_running() then
-                waywall.exec("java -Dawt.useSystemAAFontSettings=on -jar " .. nb_path)
+                waywall.exec("ninjabrain-bot")
                 waywall.show_floating(true)
             else
                 helpers.toggle_floating()

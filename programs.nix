@@ -41,6 +41,10 @@
 			unzip
 			zip
 			jq
+			gimp
+			ninjabrain-bot
+			pulseaudio
+			waywall
 		];
 
 	programs.obs-studio = {

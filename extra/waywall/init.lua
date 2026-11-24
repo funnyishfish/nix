@@ -49,9 +49,9 @@ local cfg = {
 
     -- ==== MACROS ====
     -- resolution changes
-    thin = { key = "*-H", f3_safe = false, ingame_only = true },
+    thin = { key = "*-Z", f3_safe = false, ingame_only = true },
     wide = { key = "*-B", f3_safe = true, ingame_only = true },
-    tall = { key = "*-Z", f3_safe = false, ingame_only = false },
+    tall = { key = "*-H", f3_safe = false, ingame_only = false },
 
     -- startup actions
     toggle_fullscreen_key = "Shift-O",
@@ -74,7 +74,7 @@ local cfg = {
 
 
     -- ==== MISC ====
-    sens_change = { enabled = false, normal = 1.0, tall = 0.1 },
+    sens_change = { enabled = true, normal = 12.8000006, tall = 0.86348038 },
     enable_resize_animations = false,
 
 }

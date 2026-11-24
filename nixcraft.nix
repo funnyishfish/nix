@@ -1,8 +1,24 @@
-{ config, pkgs, inputs, ... }: {
+{ config, pkgs, inputs, ... }:
+let
+	killEveryone = pkgs.symlinkJoin {
+		name = "kill-everyone";
+		paths = [ pkgs.waywall ];
+		nativeBuildInputs = [ pkgs.makeWrapper ];
+		postBuild = ''
+			wrapProgram $out/bin/waywall \
+				--prefix PATH : ${pkgs.lib.makeBinPath [
+					pkgs.ninjabrain-bot
+					pkgs.jdk21
+					pkgs.procps
+					pkgs.wl-clipboard
+				]}
+		'';
+	};
+in
+{
 	imports = [
 		inputs.nixcraft.homeModules.default
 	];
-
 	nixcraft = {
 		enable = true;
 
@@ -45,6 +61,7 @@
 
 				waywall = {
 					enable = true;
+					package = killEveryone;
 					configDir = ./extra/waywall;
 				};
 
