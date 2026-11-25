@@ -18,6 +18,7 @@
 			url = "github:nix-community/home-manager/release-26.05";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		musnix.url = "github:musnix/musnix";
 	};
 
 	outputs = {
@@ -45,6 +46,7 @@
 			modules = [
 				./configuration.nix
 				home-manager.nixosModules.home-manager
+				inputs.musnix.nixosModules.musnix
 			];
 			specialArgs = {
 				inherit inputs;

@@ -12,6 +12,10 @@
 			./programs.nix
 	];
 
+	musnix = {
+		enable = true;
+	};
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 	nixpkgs.config = {
 		allowUnfree = true;
@@ -70,6 +74,30 @@
 		alsa.enable = true;
 		alsa.support32Bit = true;
 		pulse.enable = true;
+		extraConfig.pipewire."92-low-latency" = {
+			"context.properties" = {
+				"default.clock.rate" = 48000;
+				"default.clock.quantum" = 256;
+				"default.clock.min-quantum" = 128;
+				"default.clock.max-quantum" = 512;
+			};
+		};
+
+		wireplumber.extraConfig = {
+			"10-bluez" = {
+				"monitor.bluez.properties" = {
+					"bluez5.enable-sbc-xq" = true;
+					"bluez5.enable-msbc" = true;
+					"bluez5.enable-hw-volume" = true;
+					"bluez5.codecs" = [ "sbc_xq" "sbc" ];
+				};
+			};
+			"11-bluetooth-policy" = {
+				"wireplumber.settings" = {
+					"bluetooth.autoswitch-to-headset-profile" = false;
+				};
+			};
+		};
 	};
 
 	services.flatpak.enable = true;
@@ -81,7 +109,7 @@
 	users.users."funnyishfish" = {
 		isNormalUser = true;
 		description = "fishy";
-		extraGroups = [ "networkmanager" "wheel" ];
+		extraGroups = [ "networkmanager" "wheel" "audio" ];
 	};
 
 	system.stateVersion = "26.05"; # do not touch
